@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:15:31 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:35:07 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:27:16 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,45 +32,29 @@ static int	ft_open_ber(char *filename)
 	return (fd);
 }
 
-int	arg_check(int argc, char *argv)
+int	check_arg_and_fd(int argc, char **argv)
 {
 	int		fd;
 	int		flag;
 
+	if (argc != 2)
+	{
+		perror("Error. El número de argumentos no es válido\n");
+		return (-1);
+	}
 	flag = check_map_extention(argv[1]);
 	if (flag == 0)
-		error_exit("Error. La extension del archivo no es valida.\n");
+	{
+		perror("Error. La extension del archivo no es valida.\n");
+		return (-1);
+	}
 	fd = ft_open_ber(argv[1]);
 	if (fd == -1)
-		error_exit("Error. No se ha podido abrir el archivo.\n");
-	return (fd);
-}
-
-void	map_obj(t_game *game)
-{
-	int	row;
-	int	col;
-
-	row = 0;
-	while (game->map[row])
 	{
-		col = 0;
-		while (game->map[row][col])
-		{
-			if (game->map[row][col] == 'P' && game->player <= 1)
-			{
-				game->player_x = row;
-				game->player_y = col;
-				game->player++;
-			}
-			if (game->map[row][col] == 'E' && game->exit <= 1)
-				game->exit++;
-			if (game->map[row][col] == 'C')
-				game->apple++;
-			col++;
-		}
-		row++;
+		perror("Error. No se ha podido abrir el archivo.\n");
+		return (-1);
 	}
+	return (fd);
 }
 
 void	read_map(int fd, t_game *game)
@@ -93,5 +77,39 @@ void	read_map(int fd, t_game *game)
 	}
 	close(fd);
 	game->map = ft_split(game->strbigline, '\n');
-	check_map_obj(game);
+	// has_exit_player_colect(game);
+}
+
+void	check_map(t_game *game)
+{
+	(void) game;
+	if (all_char_valid(game) != 0)
+	{
+		ft_printf("He llegado hasta aqui1\n");
+		error_free_exit(game, "Error. El mapa tiene char no validos\n");
+	}
+	
+	if (has_exit_player_colect(game) != 0)
+	{
+		ft_printf("He llegado hasta aqui2\n");
+		error_free_exit(game, "Error. El mapa tiene char no validos\n");
+	}
+	if (is_rectangle(game) != 0)
+	{
+		ft_printf("He llegado hasta aqui3\n");
+		error_free_exit(game, "Error. El mapa no es un rectángulo\n");
+	}
+	if (perimeter_check(game) != 0)
+	{
+		ft_printf("He llegado hasta aqui4\n");
+		error_free_exit(game, "Error. El perimetro no es correcto\n");
+	}
+	//y esta
+	if (check_map_resolt(game) != 0)
+	{
+		ft_printf("He llegado hasta aqui5\n");
+		error_free_exit(game, "Error. El mapa no tiene solución.\n");
+	}
+	else
+		ft_printf("El mapa es correcto, seguimos\n");
 }

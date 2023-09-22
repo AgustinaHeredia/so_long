@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:35:05 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:17:18 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,17 @@ typedef struct s_game
 
 int		main(int argc, char **argv);
 void	error_exit(char *str);
-int		arg_check(int argc, char *argv);
+int		check_arg_and_fd(int argc, char **argv);
 void	read_map(int fd, t_game *game);
-void	map_obj(t_game *game);
+void	flood_fill(t_game *game, char **tab, int x, int y);
+char	**create_copy_map(char **map, int height, int width);
+void	free_map(char **tab, int rows);
+int		all_char_valid(t_game *game);
+int		has_exit_player_colect(t_game *game);
+int		is_rectangle(t_game *game);
+int		perimeter_check(t_game *game);
+int		check_map_resolt(t_game *game);
+void	check_map(t_game *game);
+void	error_free_exit(t_game *game, char *str);
 
 #endif

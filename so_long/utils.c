@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:10:19 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/21 15:22:46 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:16:59 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	flood_fill(t_game *game, char **tab, int x, int y)
 	flood_fill(game, tab, x, y +1);
 }
 
-char	create_copy_map(char **map, int height, int width)
+char	**create_copy_map(char **map, int height, int width)
 {
 	char	**temp;
 	int		i;
@@ -53,7 +53,7 @@ char	create_copy_map(char **map, int height, int width)
 	return (temp);
 }
 
-void	free_tab(char **tab, int rows)
+void	free_map(char **tab, int rows)
 {
 	int	i;
 

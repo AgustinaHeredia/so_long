@@ -6,16 +6,17 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2023/09/15 15:01:09 by agheredi         ###   ########.fr        #
+#    Updated: 2023/09/22 11:00:07 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 FLAGS = -Wall -Werror -Wextra --debug -g
 SRC = so_long.c \
-	 maping.c \
 	 check_arg.c \
-	 key_press.c \
+	 exit.c \
+	 rules_map.c \
+	 utils.c \
 	 
 CC = gcc
 MLX_PATH = mlx/

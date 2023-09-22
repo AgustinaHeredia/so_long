@@ -6,17 +6,11 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:24:56 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/21 10:55:22 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:12:59 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	error_exit(char *str)
-{
-	perror(str);
-	exit (EXIT_FAILURE);
-}
 
 static void	inicialice_struct(t_game *game)
 {
@@ -42,15 +36,17 @@ int	main(int argc, char **argv)
 	t_game	*game;
 	int		fd;
 
-	if (argc != 2)
-		error_exit("Error. El número de argumentos no es válido\n");
+	fd = check_arg_and_fd(argc, argv);
+	if (fd == -1)
+		error_exit("Error. Alguno de los argumentos no es valido\n");
 	game = malloc(sizeof(t_game));
 	if (!game)
 		error_exit("Error. No se ha podido iniciar la estructura de game\n");
 	inicialice_struct(game);
-	fd = arg_check(argc, argv);
 	read_map(fd, game);
+	ft_printf("He llegado hasta aqui0\n");
 	check_map(game);
-	init_game(game);
+	ft_printf("He llegado hasta aqui6\n");
+	//init_game(game);
 	return (0);
 }

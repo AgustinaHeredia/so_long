@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:05 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/22 15:33:50 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:37:09 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	all_char_valid(t_game *game)
 				&& game->map[row][col] != '0' && game->map[row][col] != '1'
 				&& game->map[row][col] != 'C')
 				return (-1);
+			if (game->map[row][col] == 'P')
+			{
+				game->player_x = row;
+				game->player_y = col;
+			}
 			col++;
 		}
 		row++;
@@ -37,13 +42,11 @@ int	all_char_valid(t_game *game)
 int	has_exit_player_colect(t_game *game)
 {
 	int	row;
-	 int	col;
+	int	col;
 
 	row = 0;
 	while (game->map[row])
 	{
-		ft_printf("%s",game->map[row]);
-		ft_printf("la linea es  %d",row);
 		col = 0;
 		while (game->map[row][col])
 		{
@@ -57,7 +60,6 @@ int	has_exit_player_colect(t_game *game)
 		}
 		row++;
 	}
-	
 	if (game->exit != 1 || game->apple <= 0 || game->player != 1)
 		return (-1);
 	return (0);
@@ -110,14 +112,11 @@ int	check_map_resolt(t_game *game)
 	int		i;
 	int		j;
 
-	//mirar esta funcion que es la que da segmentation fault
-	temp = create_copy_map(game->map, game->height, game->width);
-	// flood_fill(game, temp, game->player_x, game->player_y);
+	temp = create_copy_map(game->map, game->height);
+	flood_fill(game, temp, game->player_x, game->player_y);
 	i = 0;
-	
 	while (temp[i])
 	{
-		ft_printf("la linea es  %s",temp[i]);
 		j = 0;
 		while (temp[i][j])
 		{
@@ -130,6 +129,6 @@ int	check_map_resolt(t_game *game)
 		}
 		i++;
 	}
-	// free_map(temp, game->height);
+	free_map(temp, game->height);
 	return (0);
 }

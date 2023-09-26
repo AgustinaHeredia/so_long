@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:15:31 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/22 15:27:16 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:37:30 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,39 +77,20 @@ void	read_map(int fd, t_game *game)
 	}
 	close(fd);
 	game->map = ft_split(game->strbigline, '\n');
-	// has_exit_player_colect(game);
 }
 
 void	check_map(t_game *game)
 {
-	(void) game;
 	if (all_char_valid(game) != 0)
-	{
-		ft_printf("He llegado hasta aqui1\n");
 		error_free_exit(game, "Error. El mapa tiene char no validos\n");
-	}
-	
 	if (has_exit_player_colect(game) != 0)
-	{
-		ft_printf("He llegado hasta aqui2\n");
 		error_free_exit(game, "Error. El mapa tiene char no validos\n");
-	}
 	if (is_rectangle(game) != 0)
-	{
-		ft_printf("He llegado hasta aqui3\n");
 		error_free_exit(game, "Error. El mapa no es un rectángulo\n");
-	}
 	if (perimeter_check(game) != 0)
-	{
-		ft_printf("He llegado hasta aqui4\n");
 		error_free_exit(game, "Error. El perimetro no es correcto\n");
-	}
-	//y esta
 	if (check_map_resolt(game) != 0)
-	{
-		ft_printf("He llegado hasta aqui5\n");
 		error_free_exit(game, "Error. El mapa no tiene solución.\n");
-	}
 	else
 		ft_printf("El mapa es correcto, seguimos\n");
 }

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/22 11:17:18 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:09:38 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@
 
 typedef struct s_xmp
 {
-	void	*floor;
-	void	*wall;
-	void	*player;
-	void	*collectable;
-	void	*exit;
+	void	*img_floor;
+	void	*img_wall;
+	void	*img_player;
+	void	*img_collectable;
+	void	*img_exit;
 }	t_xmp;
 
 typedef struct s_game
@@ -54,15 +54,19 @@ typedef struct s_game
 	int		count_colec;
 	void	*mlx;
 	void	*win;
-	t_xmp	img;
+	void	*img_floor;
+	void	*img_wall;
+	void	*img_player;
+	void	*img_collectable;
+	void	*img_exit;
 }	t_game;
 
 int		main(int argc, char **argv);
 void	error_exit(char *str);
 int		check_arg_and_fd(int argc, char **argv);
 void	read_map(int fd, t_game *game);
-void	flood_fill(t_game *game, char **tab, int x, int y);
-char	**create_copy_map(char **map, int height, int width);
+void	flood_fill(t_game *game, char **temp, int x, int y);
+char	**create_copy_map(char **map, int height);
 void	free_map(char **tab, int rows);
 int		all_char_valid(t_game *game);
 int		has_exit_player_colect(t_game *game);
@@ -71,5 +75,9 @@ int		perimeter_check(t_game *game);
 int		check_map_resolt(t_game *game);
 void	check_map(t_game *game);
 void	error_free_exit(t_game *game, char *str);
+void	upload_img(t_game *game);
+void	paint_backgroud(t_game *game);
+void	seting_map(t_game *game);
+void	init_game(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:24:56 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/22 15:12:59 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:07:57 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void	inicialice_struct(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error_exit("Error. No se ha podido iniciar la libería MLX\n");
-	ft_bzero(&(game->img), sizeof(t_xmp));
+	game->img_floor = NULL;
+	game->img_wall = NULL;
+	game->img_player = NULL;
+	game->img_collectable = NULL;
+	game->img_exit = NULL;
 }
 
 int	main(int argc, char **argv)
@@ -44,9 +48,7 @@ int	main(int argc, char **argv)
 		error_exit("Error. No se ha podido iniciar la estructura de game\n");
 	inicialice_struct(game);
 	read_map(fd, game);
-	ft_printf("He llegado hasta aqui0\n");
 	check_map(game);
-	ft_printf("He llegado hasta aqui6\n");
-	//init_game(game);
+	init_game(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/26 16:09:38 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:58:24 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@
 # define KEY_D		2
 # define IMG_PX		64
 
-typedef struct s_xmp
-{
-	void	*img_floor;
-	void	*img_wall;
-	void	*img_player;
-	void	*img_collectable;
-	void	*img_exit;
-}	t_xmp;
-
 typedef struct s_game
 {
 	int		width;
@@ -50,7 +41,7 @@ typedef struct s_game
 	int		player_x;
 	int		player_y;
 	int		apple;
-	int		p_move;
+	int		player_move;
 	int		count_colec;
 	void	*mlx;
 	void	*win;
@@ -79,5 +70,6 @@ void	upload_img(t_game *game);
 void	paint_backgroud(t_game *game);
 void	seting_map(t_game *game);
 void	init_game(t_game *game);
+int		key_press(int keycode, t_game *game);
 
 #endif

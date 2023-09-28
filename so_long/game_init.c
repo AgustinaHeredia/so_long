@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:42:07 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/26 16:20:46 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:26:14 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	upload_img(t_game *game)
 	int	img_height;
 
 	game->img_floor = mlx_xpm_file_to_image(game->mlx,
-			"./images/pasto.xpm", &img_width, &img_height);
+			"./textures/pasto.xpm", &img_width, &img_height);
 	game->img_wall = mlx_xpm_file_to_image(game->mlx,
-			"./images/arbol1.xpm", &img_width, &img_height);
+			"./textures/arbol1.xpm", &img_width, &img_height);
 	game->img_player = mlx_xpm_file_to_image(game->mlx,
-			"./images/capericitafrente.xpm", &img_width, &img_height);
+			"./textures/capericitafrente.xpm", &img_width, &img_height);
 	game->img_collectable = mlx_xpm_file_to_image(game->mlx,
-			"./images/apple1.xpm", &img_width, &img_height);
+			"./textures/apple1.xpm", &img_width, &img_height);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
-			"./images/house1.xpm", &img_width, &img_height);
+			"./textures/house1.xpm", &img_width, &img_height);
 }
 
 void	paint_backgroud(t_game *game)
@@ -35,7 +35,6 @@ void	paint_backgroud(t_game *game)
 	int	col;
 
 	row = 0;
-	col = 0;
 	while (row < game->height)
 	{
 		col = 0;
@@ -80,18 +79,13 @@ void	seting_map(t_game *game)
 
 void	init_game(t_game *game)
 {
-	game->mlx = mlx_init();
-	if (!game->mlx)
-	{
-		perror("Error. No se ha podido inicial MLX\n");
-		exit(EXIT_FAILURE);
-	}
-	game->win = mlx_new_window(game->mlx, game->width,
-			game->height, "So long");
+	game->win = mlx_new_window(game->mlx, game->width * IMG_PX,
+			game->height * IMG_PX, "So long");
 	upload_img(game);
 	paint_backgroud(game);
 	seting_map(game);
-	//param_init(map, game);
-	//mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_press, &game);
+	ft_printf("La posicion inicial del player es x: %d, y: %d\n",
+		game->player_x, game->player_y);
+	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &key_press, game);
 	mlx_loop(game->mlx);
 }

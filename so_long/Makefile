@@ -6,7 +6,7 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2023/09/28 15:43:11 by agheredi         ###   ########.fr        #
+#    Updated: 2023/10/02 13:40:34 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRC = so_long.c \
 	 utils.c \
 	 game_init.c \
 	 key_press.c \
-	 rules_game.c \
 	 
 CC = gcc
 MLX_PATH = mlx/

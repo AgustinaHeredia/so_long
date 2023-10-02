@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:24:56 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/28 15:58:33 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:40:48 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static void	inicialice_struct(t_game *game)
 	game->win = NULL;
 	game->img_floor = NULL;
 	game->img_wall = NULL;
-	game->img_player = NULL;
+	game->img_player_b = NULL;
+	game->img_player_f = NULL;
+	game->img_player_r = NULL;
+	game->img_player_l = NULL;
 	game->img_collectable = NULL;
 	game->img_exit = NULL;
 }

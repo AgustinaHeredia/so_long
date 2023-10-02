@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/28 15:58:24 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:55:49 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ typedef struct s_game
 	void	*win;
 	void	*img_floor;
 	void	*img_wall;
-	void	*img_player;
+	void	*img_player_b;
+	void	*img_player_f;
+	void	*img_player_r;
+	void	*img_player_l;
 	void	*img_collectable;
 	void	*img_exit;
 }	t_game;
@@ -68,8 +71,14 @@ void	check_map(t_game *game);
 void	error_free_exit(t_game *game, char *str);
 void	upload_img(t_game *game);
 void	paint_backgroud(t_game *game);
-void	seting_map(t_game *game);
+void	setting_map(t_game *game);
 void	init_game(t_game *game);
-int		key_press(int keycode, t_game *game);
+int		press_key(int key_code, t_game *game);
+void	move_w(t_game *game);
+void	move_a(t_game *game);
+void	move_s(t_game *game);
+void	move_d(t_game *game);
+void	exit_game(t_game *game);
+void	clear_game(t_game *game);
 
 #endif

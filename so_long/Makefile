@@ -6,12 +6,12 @@
 #    By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 11:45:19 by agheredi          #+#    #+#              #
-#    Updated: 2023/10/02 13:40:34 by agheredi         ###   ########.fr        #
+#    Updated: 2023/10/03 09:42:18 by agheredi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-FLAGS = -Wall -Werror -Wextra --debug -g
+FLAGS = -Wall -Werror -Wextra -g
 SRC = so_long.c \
 	 check_arg.c \
 	 exit.c \
@@ -19,6 +19,7 @@ SRC = so_long.c \
 	 utils.c \
 	 game_init.c \
 	 key_press.c \
+	 setting_img.c \
 	 
 CC = gcc
 MLX_PATH = mlx/

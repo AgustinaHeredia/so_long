@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:24:56 by agheredi          #+#    #+#             */
-/*   Updated: 2023/10/02 13:40:48 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:43:30 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ static void	inicialice_struct(t_game *game)
 	game->strbigline = NULL;
 	game->map = NULL;
 	game->player = 0;
-	game->exit = 0;
 	game->player_x = 0;
 	game->player_y = 0;
+	game->exit = 0;
+	game->exit_x = 0;
+	game->exit_y = 0;
 	game->apple = 0;
 	game->player_move = 0;
 	game->count_colec = 0;

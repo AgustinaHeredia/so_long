@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 15:42:07 by agheredi          #+#    #+#             */
-/*   Updated: 2023/10/02 13:52:15 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:02:51 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,44 +54,14 @@ void	paint_backgroud(t_game *game)
 	}
 }
 
-void	setting_map(t_game *game)
-{
-	int	row;
-	int	col;
-
-	row = 0;
-	while (row < game->height)
-	{
-		col = 0;
-		while (col < game->width)
-		{
-			if (game->map[row][col] == '1')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->img_wall, col * IMG_PX, row * IMG_PX);
-			else if (game->map[row][col] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->img_collectable, col * IMG_PX, row * IMG_PX);
-			else if (game->map[row][col] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->img_player_f, col * IMG_PX, row * IMG_PX);
-			else if (game->map[row][col] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win,
-					game->img_exit, col * IMG_PX, row * IMG_PX);
-			col++;
-		}
-		row++;
-	}
-}
-
 void	init_game(t_game *game)
 {
 	game->win = mlx_new_window(game->mlx, game->width * IMG_PX,
 			game->height * IMG_PX, "So long");
 	upload_img(game);
 	paint_backgroud(game);
-	setting_map(game);
-	ft_printf("La posicion inicial del player es x: %d, y: %d\n",
-		game->player_x, game->player_y);
+	setting_map_f(game);
 	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &press_key, game);
+	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);
 	mlx_loop(game->mlx);
 }

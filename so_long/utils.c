@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 12:10:19 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/26 15:33:44 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:49:58 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	free_map(char **tab, int rows)
 		i++;
 	}
 	free(tab);
+}
+
+void	position_exit(t_game *game, int row, int col)
+{
+	game->exit++;
+	game->exit_x = row;
+	game->exit_y = col;
 }

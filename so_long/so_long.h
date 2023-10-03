@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:25:16 by agheredi          #+#    #+#             */
-/*   Updated: 2023/10/02 13:55:49 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:44:02 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define X_EVENT_KEY_PRESS		2
 # define X_EVENT_KEY_RELEASE	3
+# define X_EVENT_KEY_EXIT		17
 
 # define KEY_ESC	53
 # define KEY_W		13
@@ -37,9 +38,11 @@ typedef struct s_game
 	char	*strbigline;
 	char	**map;
 	int		player;
-	int		exit;
 	int		player_x;
 	int		player_y;
+	int		exit;
+	int		exit_x;
+	int		exit_y;
 	int		apple;
 	int		player_move;
 	int		count_colec;
@@ -71,14 +74,18 @@ void	check_map(t_game *game);
 void	error_free_exit(t_game *game, char *str);
 void	upload_img(t_game *game);
 void	paint_backgroud(t_game *game);
-void	setting_map(t_game *game);
+void	setting_map_b(t_game *game);
+void	setting_map_f(t_game *game);
+void	setting_map_r(t_game *game);
+void	setting_map_l(t_game *game);
 void	init_game(t_game *game);
 int		press_key(int key_code, t_game *game);
 void	move_w(t_game *game);
 void	move_a(t_game *game);
 void	move_s(t_game *game);
 void	move_d(t_game *game);
-void	exit_game(t_game *game);
+int		exit_game(t_game *game);
 void	clear_game(t_game *game);
+void	position_exit(t_game *game, int row, int col);
 
 #endif

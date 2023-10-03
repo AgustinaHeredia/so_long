@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:15:31 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/26 15:37:30 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:26:28 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	read_map(int fd, t_game *game)
 	}
 	close(fd);
 	game->map = ft_split(game->strbigline, '\n');
+	free(game->strbigline);
 }
 
 void	check_map(t_game *game)

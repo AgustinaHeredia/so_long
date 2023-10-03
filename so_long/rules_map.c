@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:29:05 by agheredi          #+#    #+#             */
-/*   Updated: 2023/09/28 10:42:04 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:50:16 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	has_exit_player_colect(t_game *game)
 		while (game->map[row][col])
 		{
 			if (game->map[row][col] == 'E')
-				game->exit++;
+				position_exit(game, row, col);
 			if (game->map[row][col] == 'P')
 				game->player++;
 			if (game->map[row][col] == 'C')

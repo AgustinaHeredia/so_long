@@ -6,7 +6,7 @@
 /*   By: agheredi <agheredi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:24:56 by agheredi          #+#    #+#             */
-/*   Updated: 2023/10/04 09:55:45 by agheredi         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:27:42 by agheredi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static void	inicialice_struct(t_game *game)
 	game->apple = 0;
 	game->player_move = 0;
 	game->count_colec = 0;
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		error_exit("Error. No se ha podido iniciar la libería MLX\n");
+	game->mlx = NULL;
 	game->win = NULL;
 	game->img_floor = NULL;
 	game->img_wall = NULL;
@@ -55,6 +53,9 @@ int	main(int argc, char **argv)
 	inicialice_struct(game);
 	read_map(fd, game);
 	check_map(game);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		error_exit("Error. No se ha podido iniciar la libería MLX\n");
 	init_game(game);
 	return (0);
 }
